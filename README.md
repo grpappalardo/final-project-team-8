@@ -18,7 +18,7 @@ Challenge 2 processes the KEcounty_votes.txt file with separate functions to mun
 
 The ```munge_data``` function strips blank spaces at the beginning and end of the datum, makes all text lowercase, then puts it in title format. Then it removes extra blank spaces and corrects a misspelled county found in the file.
 
-The ```valid_voter function``` determines if it is True or False that a vote is valid. The munge_data function is called to munge the voter information, then a list is created. If the name is already in the list, an alert is printed and the function is returned as False. If not, the vote is counted and the function is returned as True.
+The ```valid_voter``` function determines if it is True or False that a vote is valid. The munge_data function is called to munge the voter information, then a list is created. If the name is already in the list, an alert is printed and the function is returned as False. If not, the vote is counted and the function is returned as True.
 
 The ```count_votes``` function determines, using a dictionary, how many legitimate votes were cast for each county. The KEcounty_votes.txt is munged and split so that the name and the vote are separate. If the vote is valid, per use of the valid_voter function, it is added to the counts dictionary. This information is output using concatenation. 
 
