@@ -15,3 +15,4 @@ The first script (Challenge 1) defines a function that takes a county name as an
 The second script (Challenge 2) processes the KEcounty_votes.txt file with separate functions to munge a string to make it easy to match against, check if someone has voted before, and finally to count a vote.
 
 Challenge 1 was much more straightforward than Challenge 2. While Challenge 2's functions themselves are fairly straightforward, putting the lines of code together in a logical way was difficult, especially when they returned unexpected results (we both experienced an error where only 1 county with 1 vote was returned, ```Nairobi County: 1```.
+Making the functions fit together was a new and exciting aspect of Challenge 2 compared to earlier work in the class. In order for the count_votes function work, the valid_voter function must check for fraud, and the munge_data function is used in both later functions to ensure correct reading of the file's information
