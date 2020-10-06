@@ -15,7 +15,7 @@ This script extracts 5-day weather forecast information from the National Weathe
 Service website using the BeautifulSoup library. Functionality has been added to 
 allow the user to input latitude and longitude in decimal degrees. This information 
 is then formatted for readability (fixing spacing issues present in the scraped 
-data), as well as converted to all uppercase.
+data), as well as converted to all uppercase characters.
 '''
 
 # import required libraries
@@ -27,8 +27,8 @@ forecast = []
 
 ## Provide the latitude and longitude for the location you would like to check the forecast for
 
-latput = input("Enter latitude in decimal degrees here:") #asking for user input latitude
-longput = input("Enter longitude in decimal degrees here:") #asking for user input longitude
+latput = input("Enter latitude in decimal degrees here: ") #asking for user input latitude
+longput = input("Enter longitude in decimal degrees here: ") #asking for user input longitude
 
 #convert user generated lat and long to strings
 lat = str(latput)
