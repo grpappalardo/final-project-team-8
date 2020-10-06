@@ -9,5 +9,8 @@ Your write up should clearly and succinctly describe __both__ scripts. Your subm
 
 Remember: when this project is complete, we can transfer ownership of this repo to you so it will appear in your Github account and be something you can use to demonstrate your technical ability coming out of this class: so make this count! You can also use [Github's "Issues" functionality](https://guides.github.com/features/issues/) to communicate directly with your partner via Github (you can also tag Shashank and I for questions!). 
 
-**Script 1:** 
+**Script 1**
+
+This script extracts 5-day weather forecast information from the National Weather Service website using the BeautifulSoup library. Functionality was added to allow the user to input latitude and longitude in decimal degrees. This information is then formatted for readability (fixing spacing issues present in the scraped data), as well as converted to all uppercase.
+
 We found that Script 1 provided an incomplete formatting solution: after fixing all the formatting issues for one set of weather conditions, more issues would appear as the weather changed. Editing individual items using  ```.replace()``` is not a very efficient way to format a constantly-changing weather forecast. However, as of 10/6/20 at 10 AM, the forecast is correctly formatted.
