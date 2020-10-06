@@ -22,33 +22,35 @@ returns the number of votes for that particular county.
 
 The second script processes the KEcounty_votes.txt file with separate functions to
 munge a string to make it easy to match against, check if someone has voted before,
-and finally to count a vote.
+and finally to count the total votes for each county.
 '''
-from google.colab import files #uploading the KEcounty_votes.txt file
+
+from google.colab import files # uploading the KEcounty_votes.txt file
 uploaded = files.upload()
 
-#CHALLENGE 1
+# Challenge 1
+# counts the total amount of votes for the county passed as the argument
 def vote_count(county):
   with open("KEcounty_votes.txt") as file:
-    count = 0
-    for line in file:
-      line = line.strip()  # strips end's newline
+    count = 0 # starts a counter at 0
+    for line in file: # looks at each line the file
+      line = line.strip()  # strips blank spaces at beginning and end of line
       if county in line:  # if argument is in line, added to counter
         count += 1  # adds to the counter
-    print("There are " + str(count) + " votes for " + county +".")  # this prints the total count for county in a sentence
+    print("There are " + str(count) + " votes for " + county +".")  # this prints the total count for the county in a sentence
 vote_count("Homa Bay")
 
-#CHALLENGE 2
-# function 1: munge data
+# Challenge 2
+# function 1: munges the data
 def munge_data (datum):
     datum = datum.strip() # strip blank spaces at beginning and end
-    datum = datum.strip().lower().title() # make all text lower case then First Letter Capital
+    datum = datum.strip().lower().title() # strips blank spaces, then makes all text lowercase, then makes first letter of each word uppercase
     datum = datum.replace("  ", " ") # remove extra spaces between words
-    datum = datum.replace("Mombassa", "Mombasa") #fix spelling error
-    return datum # return munged datum
+    datum = datum.replace("Mombassa", "Mombasa") # fixes spelling error found in file
+    return datum # returns the munged datum
 
-# function 2: check if someone has voted before
-voter_list = []
+# function 2: checks if someone has voted before. If so, they are not a 'valid voter'
+voter_list = [] # creates an empty list
 def valid_vote(voter):
     voter = munge_data(voter) # call previous function to munge the names
     if voter in voter_list: # if the person is already in the list, print fraud alert
@@ -58,24 +60,23 @@ def valid_vote(voter):
         voter_list.append(voter) # add new name to list
         return True # logic of 'valid vote is True'
 
-# function 3: count vote
-counts = {}
+# function 3: count the votes
+counts = {} # create empty dictionary
 def count_votes(vote_file):
-    print("Results: \n")
     with open(vote_file) as file:
         for line in file:
             line = munge_data(line) # call munging function
             name, vote = line.split(" - ") # split at break between name and vote
-            vote = munge_data(vote)
-            name = munge_data(name)
-            if valid_vote(name):
+            vote = munge_data(vote) # assigns vote the munged vote data
+            name = munge_data(name) # assigns name the munged name data
+            if valid_vote(name): # if the name is valid per the valid_vote function and the county has not been voted for yet, it is added to counts
                 if vote not in counts:
                 #First vote for county
                     counts[vote] = 1
                 else:
-                # vote incrementation
+                # vote incrementation if the county has existing vote(s)
                     counts[vote] += 1
-        for name in sorted(counts):
-            count = counts[name]
-            print(name + ": " + str(count)+" votes")
+        for name in sorted(counts): # sorts the counts dictionary
+            count = counts[name] 
+            print(name + ": " + str(count)+" votes") # prints the name of the county plus the counted number of votes plus the word votes
 count_votes("KEcounty_votes.txt")
