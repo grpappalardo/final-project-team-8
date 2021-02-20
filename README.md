@@ -1,4 +1,3 @@
-# Final Project
 # Data Munging and Analysis with Python
 
 **Script 1**
